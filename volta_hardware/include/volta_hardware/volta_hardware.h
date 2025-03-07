@@ -31,6 +31,7 @@ private:
 	uint8_t timeFlag;
 	int16_t prevRPMLeft,prevRPMRight;
 	float subMotorRPMRight,subMotorRPMLeft , pubMotorRPMRight,pubMotorRPMLeft;
+    double subMotorRotationsRight = 0,subMotorRotationsLeft = 0;
 
 	ros::Publisher rpm_pub ;
 	ros::Subscriber rpm_sub ;
@@ -39,6 +40,7 @@ private:
     void limit_speeds(float &left,float &right);
     double convert_rpm_to_radians(float rpm);
     double convert_radians_to_rpm(float radians);
+    double convert_rotation_to_radians(double rotation);
 
     hardware_interface::JointStateInterface joint_state_interface_;
     hardware_interface::VelocityJointInterface velocity_joint_interface_;
